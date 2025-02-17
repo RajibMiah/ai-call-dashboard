@@ -89,7 +89,7 @@ const Navbar = (props) => {
                 </div>
                 <div className="flex h-full w-full flex-col justify-center rounded-lg px-1 text-sm ms-2">
                   <p className="mb-1 text-base font-bold text-gray-900 text-start dark:text-white">
-                    New Update: Horizon UI Dashboard PRO
+                    New Update: Dashboard UI Dashboard PRO
                   </p>
                   <p className="font-base text-xs text-gray-900 text-start dark:text-white">
                     A new update for your downloaded item is available!
@@ -103,7 +103,7 @@ const Navbar = (props) => {
                 </div>
                 <div className="flex h-full w-full flex-col justify-center rounded-lg px-1 text-sm ms-2">
                   <p className="mb-1 text-base font-bold text-gray-900 text-start dark:text-white">
-                    New Update: Horizon UI Dashboard PRO
+                    New Update: Dashboard UI Dashboard PRO
                   </p>
                   <p className="font-base text-xs text-gray-900 text-start dark:text-white">
                     A new update for your downloaded item is available!
@@ -114,7 +114,7 @@ const Navbar = (props) => {
           }
           classNames={"py-2 top-4 left-0 -start-[230px] md:-start-[440px] w-max"}
         />
-        {/* start Horizon PRO */}
+        {/* start Dashboard PRO */}
         <Dropdown
           button={
             <p className="cursor-pointer">
@@ -133,24 +133,24 @@ const Navbar = (props) => {
               />
               <a
                 target="blank"
-                href="https://horizon-ui.com/pro?ref=live-free-tailwind-react"
+                href="https://Dashboard-ui.com/pro?ref=live-free-tailwind-react"
                 className="px-full linear flex cursor-pointer items-center justify-center rounded-xl bg-brand-500 py-[11px] font-bold text-white transition duration-200 hover:bg-brand-600 hover:text-white active:bg-brand-700 dark:bg-brand-400 dark:hover:bg-brand-300 dark:active:bg-brand-200"
               >
-                Buy Horizon UI PRO
+                Buy Dashboard UI PRO
               </a>
               <a
                 target="blank"
-                href="https://horizon-ui.com/docs-tailwind/docs/react/installation?ref=live-free-tailwind-react"
+                href="https://Dashboard-ui.com/docs-tailwind/docs/react/installation?ref=live-free-tailwind-react"
                 className="px-full linear flex cursor-pointer items-center justify-center rounded-xl border py-[11px] font-bold text-navy-700 transition duration-200 hover:bg-gray-200 hover:text-navy-700 dark:!border-white/10 dark:text-white dark:hover:bg-white/20 dark:hover:text-white dark:active:bg-white/10"
               >
                 See Documentation
               </a>
               <a
                 target="blank"
-                href="https://horizon-ui.com/?ref=live-free-tailwind-react"
+                href="https://Dashboard-ui.com/?ref=live-free-tailwind-react"
                 className="hover:bg-black px-full linear flex cursor-pointer items-center justify-center rounded-xl py-[11px] font-bold text-navy-700 transition duration-200 hover:text-navy-700 dark:text-white dark:hover:text-white"
               >
-                Try Horizon Free
+                 Dashboard
               </a>
             </div>
           }
