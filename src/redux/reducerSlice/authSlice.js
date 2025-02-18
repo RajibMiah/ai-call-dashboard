@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { persistor } from '../store';
 
 const initialState ={
     isAuthorized: false,
@@ -12,8 +13,7 @@ const authSlice = createSlice({
     initialState,
     reducers:{
         logOut: (state , action)=>{
-            state.data = [];
-            state.isAuthorized = false;
+            persistor.purge()
         },
     },
     
