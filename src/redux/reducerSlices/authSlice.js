@@ -4,6 +4,7 @@ import { registerUser, loginUser } from "../thunks/authThunks";
 
 const initialState = {
   isAuthorized: false,
+  isAdmin: false,
   token: null,
   isLoading: false,
   data: [],
@@ -27,6 +28,7 @@ const authSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload.user;
+        state.isAdmin = action.payload?.user?.status;
         state.token = action.payload.token;
         state.isAuthorized = true;
       })

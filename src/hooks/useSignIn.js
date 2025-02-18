@@ -4,7 +4,7 @@ import { loginUser } from "../redux/thunks/authThunks";
 
 const useSignIn = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
-  const [keepMeLogIn , setKeepMeLogIn] = useState(true);
+  const [keepMeLogIn, setKeepMeLogIn] = useState(true);
   const dispatch = useDispatch();
   const { loading, error, user } = useSelector((state) => state.auth);
 
@@ -19,9 +19,9 @@ const useSignIn = () => {
     dispatch(loginUser(formData));
   };
 
-  const handleStayLogIn = () =>{
+  const handleStayLogIn = () => {
     setKeepMeLogIn(!keepMeLogIn);
-  }
+  };
 
   return {
     formData,

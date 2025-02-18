@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const ProtectedRoute = () => {
   const { token, isAuthorized } = useSelector((state) => state.auth); // Get auth state from Redux
-
+  console.log("token", token, "is authorized", isAuthorized);
   return token && isAuthorized ? (
     <Outlet />
   ) : (

@@ -1,14 +1,34 @@
+import { useSelector } from "react-redux";
+import { replace, useNavigate } from "react-router-dom";
 import InputField from "components/fields/InputField";
 import { FcGoogle } from "react-icons/fc";
 import Checkbox from "components/checkbox";
 import { Link } from "react-router-dom";
-import useSignIn from "hooks/useSignIn";
+import useSignIn from "../../hooks/useSignIn";
+import { useEffect } from "react";
 
 export default function SignIn() {
-  const { formData, handleChange, handleSubmit,keepMeLogIn,handleStayLogIn, loading, error } = useSignIn();
+  const {
+    formData,
+    handleChange,
+    handleSubmit,
+    keepMeLogIn,
+    handleStayLogIn,
+    loading,
+    error,
+  } = useSignIn();
+
+  const { isAuthenticate } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticate) {
+      navigate("/admin", (replace = true));
+    }
+  }, [isAuthenticate, navigate]);
 
   return (
-    <div className="mt-16 mb-16 flex h-full w-full items-center justify-center px-2 md:mx-0 md:px-0 lg:mb-10 lg:items-center lg:justify-start">
+    <div className="mb-16 mt-16 flex h-full w-full items-center justify-center px-2 md:mx-0 md:px-0 lg:mb-10 lg:items-center lg:justify-start">
       {/* Sign in section */}
       <div className="mt-[10vh] w-full max-w-full flex-col items-center md:pl-4 lg:pl-0 xl:max-w-[420px]">
         <h4 className="mb-2.5 text-4xl font-bold text-navy-700 dark:text-white">
@@ -30,9 +50,9 @@ export default function SignIn() {
           <p className="text-base text-gray-600 dark:text-white"> or </p>
           <div className="h-px w-full bg-gray-200 dark:bg-navy-700" />
         </div>
-        
+
         {/* Error Message */}
-        {error && <p className="text-red-500 text-sm mb-3">{error.message}</p>}
+        {error && <p className="mb-3 text-sm text-red-500">{error.message}</p>}
 
         {/* Email */}
         <InputField
@@ -63,10 +83,7 @@ export default function SignIn() {
         {/* Checkbox */}
         <div className="mb-4 flex items-center justify-between px-2">
           <div className="flex items-center">
-            <Checkbox  
-              value = {keepMeLogIn}
-              onChange = {handleStayLogIn}
-            />
+            <Checkbox value={keepMeLogIn} onChange={handleStayLogIn} />
             <p className="ml-2 text-sm font-medium text-navy-700 dark:text-white">
               Keep me logged In
             </p>

@@ -1,14 +1,29 @@
+import { useEffect } from "react";
+import { Link, replace, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import InputField from "components/fields/InputField";
 import { FcGoogle } from "react-icons/fc";
 import Checkbox from "components/checkbox";
-import { Link } from "react-router-dom";
-import useRegister from "hooks/useRegister";
+
+import useRegister from "../../hooks/useRegister";
+import Admin from "layouts/admin";
 
 export default function Register() {
-  const { formData, handleChange, handleSubmit, loading, error } = useRegister();
+  const { formData, handleChange, handleSubmit, loading, error } =
+    useRegister();
+
+  const { isAdmin } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!Admin) {
+      navigate("/admin", (replace = true));
+    }
+  }, [isAdmin, navigate]);
 
   return (
-    <div className="mt-16 mb-16 flex h-full w-full items-center justify-center px-2 md:mx-0 md:px-0 lg:mb-10 lg:items-center lg:justify-start">
+    <div className="mb-16 mt-16 flex h-full w-full items-center justify-center px-2 md:mx-0 md:px-0 lg:mb-10 lg:items-center lg:justify-start">
       {/* Registration Section */}
       <div className="mt-[10vh] w-full max-w-full flex-col items-center md:pl-4 lg:pl-0 xl:max-w-[420px]">
         <h4 className="mb-2.5 text-4xl font-bold text-navy-700 dark:text-white">
@@ -36,7 +51,7 @@ export default function Register() {
         </div>
 
         {/* Error Message */}
-        {error && <p className="text-red-500 text-sm mb-3">{error.message}</p>}
+        {error && <p className="mb-3 text-sm text-red-500">{error.message}</p>}
 
         {/* First Name */}
         <InputField
