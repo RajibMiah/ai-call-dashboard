@@ -16,7 +16,12 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logOut: (state, action) => {
-      persistor.purge();
+      state.isAuthorized = false;
+      state.isAdmin = false;
+      state.token = null;
+      state.data = [];
+      state.error = "";
+      // persistor.purge();
     },
   },
   extraReducers: (builder) => {
@@ -27,30 +32,37 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = action.payload.user;
-        state.isAdmin = action.payload?.user?.status;
-        state.token = action.payload.token;
-        state.isAuthorized = true;
+        state.data = action.payload?.use ?? [];
+        state.token = action.payload?.token;
+        state.isAuthorized = state.token != null;
+        state.isAdmin = true;
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.data = [];
+        state.token = null;
+        state.error = action.payload?.error?.message ?? "Something went wrong.";
       })
 
       //Handle Login
       .addCase(loginUser.pending, (state, action) => {
-        state.isLoading = false;
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        console.log("action dispatched", action);
+        state.isLoading = true;
+        state.error = null;
       })
-      .addCase(loginUser.fulfilled, (action, state) => {
+      .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.data = action.payload?.use ?? [];
+        state.token = action.payload?.token;
+        state.isAuthorized = state.token != null;
+        state.isAdmin = true;
       })
 
-      .addCase(loginUser.rejected, (state) => {
-        state.user = null;
+      .addCase(loginUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.data = [];
         state.token = null;
+        state.error = action.payload?.error?.message ?? "Something went wrong.";
       });
   },
 });

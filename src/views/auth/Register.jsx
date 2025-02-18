@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link, replace, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import InputField from "components/fields/InputField";
@@ -18,7 +18,7 @@ export default function Register() {
 
   useEffect(() => {
     if (!Admin) {
-      navigate("/admin", (replace = true));
+      navigate("/admin");
     }
   }, [isAdmin, navigate]);
 

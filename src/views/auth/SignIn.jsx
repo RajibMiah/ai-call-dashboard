@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { replace, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import InputField from "components/fields/InputField";
 import { FcGoogle } from "react-icons/fc";
 import Checkbox from "components/checkbox";
@@ -18,14 +18,14 @@ export default function SignIn() {
     error,
   } = useSignIn();
 
-  const { isAuthenticate } = useSelector((state) => state.auth);
+  const { isAuthorized } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticate) {
-      navigate("/admin", (replace = true));
+    if (isAuthorized) {
+      navigate("/admin");
     }
-  }, [isAuthenticate, navigate]);
+  }, [isAuthorized, navigate]);
 
   return (
     <div className="mb-16 mt-16 flex h-full w-full items-center justify-center px-2 md:mx-0 md:px-0 lg:mb-10 lg:items-center lg:justify-start">

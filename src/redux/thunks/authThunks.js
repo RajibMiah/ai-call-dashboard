@@ -7,7 +7,10 @@ export const registerUser = createAsyncThunk(
   "auth/register",
   async (payload, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${API_URL}/api/auth/register`, payload);
+      const response = await axios.post(
+        `${API_URL}/api/auth/register`,
+        payload
+      );
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || "Registration failed");
@@ -18,8 +21,12 @@ export const registerUser = createAsyncThunk(
 export const loginUser = createAsyncThunk(
   "auth/login",
   async (credentials, { rejectWithValue }) => {
+    console.log("loginUser thunk called with:", credentials);
     try {
-      const response = await axios.post(`${API_URL}/api/auth/login`, credentials);
+      const response = await axios.post(
+        `${API_URL}/api/auth/login`,
+        credentials
+      );
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || "Login failed"); // ✅ Fixed typo: "reponse" → "response"

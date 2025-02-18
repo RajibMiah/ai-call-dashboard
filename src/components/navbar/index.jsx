@@ -1,11 +1,14 @@
 import React from "react";
 import Dropdown from "components/dropdown";
+import { useDispatch } from "react-redux";
 import { FiAlignJustify } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import navbarimage from "assets/img/layout/Navbar.png";
 import { BsArrowBarUp } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { RiMoonFill, RiSunFill } from "react-icons/ri";
+
+import { logOut } from "../../redux/reducerSlices/authSlice";
 import {
   IoMdNotificationsOutline,
   IoMdInformationCircleOutline,
@@ -14,11 +17,16 @@ import avatar from "assets/img/avatars/avatar4.png";
 
 const Navbar = (props) => {
   const { onOpenSidenav, brandText } = props;
+  const dispatch = useDispatch();
   const [darkmode, setDarkmode] = React.useState(false);
+
+  const handleLogout = () => {
+    dispatch(logOut());
+  };
 
   return (
     <nav className="sticky top-4 z-40 flex flex-row flex-wrap items-center justify-between rounded-xl bg-white/10 p-2 backdrop-blur-xl dark:bg-[#0b14374d]">
-       <div className="ml-[6px]">
+      <div className="ml-[6px]">
         <div className="h-6 w-[224px] pt-1">
           <Link
             className="text-sm font-normal text-navy-700 hover:underline dark:text-white dark:hover:text-white"
@@ -26,7 +34,7 @@ const Navbar = (props) => {
           >
             Pages
             <span className="mx-1 text-sm text-navy-700 hover:text-navy-700 dark:text-white">
-              / 
+              /
             </span>
           </Link>
           <Link
@@ -121,36 +129,36 @@ const Navbar = (props) => {
           }
           children={
             <div className="flex w-[350px] flex-col gap-2 rounded-[20px] bg-white p-4 shadow-xl shadow-shadow-500 dark:!bg-navy-700 dark:text-white dark:shadow-none">
-            <div
-              style={{
-                backgroundImage: `url()`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-              }}
-              className="mb-2 aspect-video w-full rounded-lg"
-            />
-            <Link
-              target="_blank"
-              to="https://react.dev/learn"
-              className="px-full linear flex cursor-pointer items-center justify-center rounded-xl bg-brand-500 py-[11px] font-bold text-white transition duration-200 hover:bg-brand-600 hover:text-white active:bg-brand-700 dark:bg-brand-400 dark:hover:bg-brand-300 dark:active:bg-brand-200"
-            >
-              Subscribe to
-            </Link>
-            <Link
-              target="_blank"
-              to="https://react.dev/learn"
-              className="px-full linear flex cursor-pointer items-center justify-center rounded-xl border py-[11px] font-bold text-navy-700 transition duration-200 hover:bg-gray-200 hover:text-navy-700 dark:!border-white/10 dark:text-white dark:hover:bg-white/20 dark:hover:text-white dark:active:bg-white/10"
-            >
-              See Documentation
-            </Link>
-            <Link
-              target="_blank"
-              to="https://react.dev/learn"
-              className="hover:bg-black px-full linear flex cursor-pointer items-center justify-center rounded-xl py-[11px] font-bold text-navy-700 transition duration-200 hover:text-navy-700 dark:text-white dark:hover:text-white"
-            >
-              Dashboard
-            </Link>
-          </div>
+              <div
+                style={{
+                  backgroundImage: `url()`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                }}
+                className="mb-2 aspect-video w-full rounded-lg"
+              />
+              <Link
+                target="_blank"
+                to="https://react.dev/learn"
+                className="px-full linear flex cursor-pointer items-center justify-center rounded-xl bg-brand-500 py-[11px] font-bold text-white transition duration-200 hover:bg-brand-600 hover:text-white active:bg-brand-700 dark:bg-brand-400 dark:hover:bg-brand-300 dark:active:bg-brand-200"
+              >
+                Subscribe to
+              </Link>
+              <Link
+                target="_blank"
+                to="https://react.dev/learn"
+                className="px-full linear flex cursor-pointer items-center justify-center rounded-xl border py-[11px] font-bold text-navy-700 transition duration-200 hover:bg-gray-200 hover:text-navy-700 dark:!border-white/10 dark:text-white dark:hover:bg-white/20 dark:hover:text-white dark:active:bg-white/10"
+              >
+                See Documentation
+              </Link>
+              <Link
+                target="_blank"
+                to="https://react.dev/learn"
+                className="hover:bg-black px-full linear flex cursor-pointer items-center justify-center rounded-xl py-[11px] font-bold text-navy-700 transition duration-200 hover:text-navy-700 dark:text-white dark:hover:text-white"
+              >
+                Dashboard
+              </Link>
+            </div>
           }
           classNames={"py-2 top-6 -left-[250px] md:-left-[330px] w-max"}
           animation="origin-[75%_0%] md:origin-top-right transition-all duration-300 ease-in-out"
@@ -184,36 +192,36 @@ const Navbar = (props) => {
           }
           children={
             <div className="flex w-56 flex-col justify-start rounded-[20px] bg-white bg-cover bg-no-repeat shadow-xl shadow-shadow-500 dark:!bg-navy-700 dark:text-white dark:shadow-none">
-            <div className="p-4">
-              <div className="flex items-center gap-2">
-                <p className="text-sm font-bold text-navy-700 dark:text-white">
-                  👋 Hey, Adela
+              <div className="p-4">
+                <div className="flex items-center gap-2">
+                  <p className="text-sm font-bold text-navy-700 dark:text-white">
+                    👋 Hey, Adela
+                  </p>
+                </div>
+              </div>
+              <div className="h-px w-full bg-gray-200 dark:bg-white/20 " />
+
+              <div className="flex flex-col p-4">
+                <Link
+                  to="#"
+                  className="text-sm text-gray-800 dark:text-white hover:dark:text-white"
+                >
+                  Profile Settings
+                </Link>
+                <Link
+                  to="#"
+                  className="mt-3 text-sm text-gray-800 dark:text-white hover:dark:text-white"
+                >
+                  Newsletter Settings
+                </Link>
+                <p
+                  onClick={handleLogout}
+                  className="mt-3 text-sm font-medium text-red-500 transition duration-150 ease-out hover:text-red-500 hover:ease-in"
+                >
+                  Log Out
                 </p>
               </div>
             </div>
-            <div className="h-px w-full bg-gray-200 dark:bg-white/20 " />
-    
-            <div className="flex flex-col p-4">
-              <Link
-                to="#"
-                className="text-sm text-gray-800 dark:text-white hover:dark:text-white"
-              >
-                Profile Settings
-              </Link>
-              <Link
-                to="#"
-                className="mt-3 text-sm text-gray-800 dark:text-white hover:dark:text-white"
-              >
-                Newsletter Settings
-              </Link>
-              <Link
-                to="/"
-                className="mt-3 text-sm font-medium text-red-500 hover:text-red-500 transition duration-150 ease-out hover:ease-in"
-              >
-                Log Out
-              </Link>
-            </div>
-          </div>
           }
           classNames={"py-2 top-8 -left-[180px] w-max"}
         />
