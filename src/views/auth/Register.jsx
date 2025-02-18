@@ -2,8 +2,11 @@ import InputField from "components/fields/InputField";
 import { FcGoogle } from "react-icons/fc";
 import Checkbox from "components/checkbox";
 import { Link } from "react-router-dom";
+import useRegister from "hooks/useRegister";
 
 export default function Register() {
+  const { formData, handleChange, handleSubmit, loading, error } = useRegister();
+
   return (
     <div className="mt-16 mb-16 flex h-full w-full items-center justify-center px-2 md:mx-0 md:px-0 lg:mb-10 lg:items-center lg:justify-start">
       {/* Registration Section */}
@@ -32,6 +35,9 @@ export default function Register() {
           <div className="h-px w-full bg-gray-200 dark:bg-navy-700" />
         </div>
 
+        {/* Error Message */}
+        {error && <p className="text-red-500 text-sm mb-3">{error.message}</p>}
+
         {/* First Name */}
         <InputField
           variant="auth"
@@ -40,6 +46,9 @@ export default function Register() {
           placeholder="John"
           id="firstName"
           type="text"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
         />
 
         {/* Last Name */}
@@ -50,6 +59,9 @@ export default function Register() {
           placeholder="Doe"
           id="lastName"
           type="text"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
         />
 
         {/* Phone */}
@@ -60,6 +72,9 @@ export default function Register() {
           placeholder="+1234567890"
           id="phone"
           type="tel"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
         />
 
         {/* Email */}
@@ -70,6 +85,9 @@ export default function Register() {
           placeholder="john.doe@example.com"
           id="email"
           type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
         />
 
         {/* Password */}
@@ -80,19 +98,30 @@ export default function Register() {
           placeholder="Min. 8 characters"
           id="password"
           type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
         />
 
         {/* Terms & Conditions */}
         <div className="mb-4 flex items-center px-2">
-          <Checkbox />
+          <Checkbox
+            checked={formData.termsAccepted}
+            onChange={handleChange}
+            name="termsAccepted"
+          />
           <p className="ml-2 text-sm font-medium text-navy-700 dark:text-white">
             I agree to the Terms and Conditions
           </p>
         </div>
 
         {/* Register Button */}
-        <button className="linear mt-2 w-full rounded-xl bg-brand-500 py-[12px] text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200">
-          Sign Up
+        <button
+          onClick={handleSubmit}
+          className="linear mt-2 w-full rounded-xl bg-brand-500 py-[12px] text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200"
+          disabled={loading}
+        >
+          {loading ? "Signing Up..." : "Sign Up"}
         </button>
 
         {/* Already Have an Account? */}
