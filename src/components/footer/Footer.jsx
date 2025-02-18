@@ -12,7 +12,7 @@ const Footer = () => {
             <a
               target="blank"
               href="mailto:hello@simmmple.com"
-              className="text-base font-medium text-gray-600 hover:text-gray-600"
+              className="text-base font-medium text-navy-800 hover:text-gray-600  dark:text-gray-600"
             >
               Support
             </a>
@@ -21,7 +21,7 @@ const Footer = () => {
             <a
               target="blank"
               href="https://simmmple.com/licenses"
-              className="text-base font-medium text-gray-600 hover:text-gray-600"
+              className="text-base font-medium text-navy-800 hover:text-gray-600"
             >
               License
             </a>
@@ -30,7 +30,7 @@ const Footer = () => {
             <a
               target="blank"
               href="https://simmmple.com/terms-of-service"
-              className="text-base font-medium text-gray-600 hover:text-gray-600"
+              className="text-base font-medium text-navy-800 hover:text-gray-600"
             >
               Terms of Use
             </a>
@@ -39,7 +39,7 @@ const Footer = () => {
             <a
               target="blank"
               href="https://blog.Dashboard-ui.com/"
-              className="text-base font-medium text-gray-600 hover:text-gray-600"
+              className="text-base font-medium text-navy-800 hover:text-gray-600"
             >
               Blog
             </a>
