@@ -22,34 +22,42 @@ import {
 
 const routes = [
   {
-    name: "Main Dashboard",
+    name: "Analytics",
     layout: "/admin",
     path: "default",
     icon: <MdHome className="h-6 w-6" />,
     component: <MainDashboard />,
   },
   {
-    name: "Analytics",
+    name: "call-logs",
     layout: "/admin",
-    path: "nft-marketplace",
-    icon: <MdAnalytics className="h-6 w-6" />,
-    component: <NFTMarketplace />,
-    secondary: true,
+    icon: <MdCall className="h-6 w-6" />,
+    path: "call-logs",
+    component: <DataTables />,
   },
+  // {
+  //   name: "Analytics",
+  //   layout: "/admin",
+  //   path: "nft-marketplace",
+  //   icon: <MdAnalytics className="h-6 w-6" />,
+  //   component: <NFTMarketplace />,
+  //   secondary: true,
+  // },
+
   {
     name: "Make calls",
     layout: "/admin",
     icon: <MdCall className="h-6 w-6" />,
-    path: "data-tables",
+    path: "make-calls",
     component: <DataTables />,
   },
-  {
-    name: "Profile",
-    layout: "/admin",
-    path: "profile",
-    icon: <MdPerson className="h-6 w-6" />,
-    component: <Profile />,
-  },
+  // {
+  //   name: "Profile",
+  //   layout: "/admin",
+  //   path: "profile",
+  //   icon: <MdPerson className="h-6 w-6" />,
+  //   component: <Profile />,
+  // },
   {
     name: "Register",
     layout: "/auth",
@@ -57,19 +65,19 @@ const routes = [
     icon: <MdFaceUnlock className="h-6 w-6" />,
     component: <Register />,
   },
-  {
-    name: "SignIn",
-    layout: "/auth",
-    path: "sign-in",
-    icon: <MdFaceUnlock className="h-6 w-6" />,
-    component: <SignIn />,
-  },
-  {
-    name: "RTL Admin",
-    layout: "/rtl",
-    path: "rtl",
-    icon: <MdHome className="h-6 w-6" />,
-    component: <RTLDefault />,
-  },
+  // {
+  //   name: "SignIn",
+  //   layout: "/auth",
+  //   path: "sign-in",
+  //   icon: <MdFaceUnlock className="h-6 w-6" />,
+  //   component: <SignIn />,
+  // },
+  // {
+  //   name: "RTL Admin",
+  //   layout: "/rtl",
+  //   path: "rtl",
+  //   icon: <MdHome className="h-6 w-6" />,
+  //   component: <RTLDefault />,
+  // },
 ];
 export default routes;

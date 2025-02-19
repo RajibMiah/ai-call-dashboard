@@ -216,7 +216,7 @@ const Navbar = (props) => {
                 </Link>
                 <p
                   onClick={handleLogout}
-                  className="mt-3 text-sm font-medium text-red-500 transition duration-150 ease-out hover:text-red-500 hover:ease-in"
+                  className="mt-3 cursor-pointer text-sm font-medium text-red-500 transition duration-150 ease-out hover:text-red-500 hover:ease-in"
                 >
                   Log Out
                 </p>
