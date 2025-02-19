@@ -1,21 +1,28 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-
-import RtlLayout from "layouts/rtl";
 import AdminLayout from "layouts/admin";
-import AuthLayout from "layouts/auth";
 import ProtectedRoute from "components/ProtectedRoute";
+import AdminProtectedRoute from "components/ProtectedRoute/admin";
+import SignIn from "./views/auth/SignIn";
+import Register from "./views/auth/Register";
 
 const App = () => {
   return (
     <Routes>
-      <Route path="auth/*" element={<AuthLayout />} />
+      {/* Public Routes */}
+      <Route path="auth/sign-in" element={<SignIn />} />
 
-      <Route path="/" element={<ProtectedRoute />}>
+      {/* Protected Routes - Accessible only to authenticated users */}
+      <Route element={<ProtectedRoute />}>
         <Route path="admin/*" element={<AdminLayout />} />
-        <Route path="rtl/*" element={<RtlLayout />} />
+
+        {/* Admin Protected Route - Only admins can access register */}
+        <Route element={<AdminProtectedRoute />}>
+          <Route path="auth/register" element={<Register />} />
+        </Route>
       </Route>
 
+      {/* Redirect to "/admin" for logged-in users */}
       <Route path="/" element={<Navigate to="/admin" replace />} />
     </Routes>
   );
