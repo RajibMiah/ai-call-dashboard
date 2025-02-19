@@ -3,7 +3,10 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { FiAlignJustify, FiSearch } from "react-icons/fi";
 import { RiMoonFill, RiSunFill } from "react-icons/ri";
-import { IoMdNotificationsOutline } from "react-icons/io";
+import {
+  IoMdNotificationsOutline,
+  IoMdInformationCircleOutline,
+} from "react-icons/io";
 import { BsArrowBarUp } from "react-icons/bs";
 import Dropdown from "components/dropdown";
 import { logOut } from "../../redux/reducerSlices/authSlice";
